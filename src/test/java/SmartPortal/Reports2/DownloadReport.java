@@ -1,6 +1,5 @@
 package SmartPortal.Reports2;
 
-import java.util.List;
 import java.util.Set;
 
 import org.openqa.selenium.By;
@@ -19,6 +18,9 @@ public class DownloadReport {
 	WebDriver driver;
 	ExtentReports report;
 	ExtentTest logger;
+	String dateFrom = "1/January/2018";
+	String dateTo="31/January/2018";
+	
 	@Test
 	public void greenCargoReport(){
 				
@@ -54,20 +56,7 @@ public class DownloadReport {
 				se.selectByVisibleText("LastClearedAt");
 				se.selectByVisibleText("snhID");
 				
-				//To get all the options present in the dropdown
-				List<WebElement> allOptions = se.getOptions();
-				for (WebElement webElement : allOptions)
-				{
-					System.out.println(webElement.getText());
-				}
-				/*To get all the options that are selected in the dropdown.
-				List<WebElement> allSelectedOptions = se.getAllSelectedOptions();
-				for (WebElement webElement : allSelectedOptions)
-				{
-					System.out.println("You have selected::"+ webElement.getText());
-				}
-				 */
-				
+							
 				Select timeSpan = new Select(driver.findElement(By.name("timespan")));
 		        timeSpan.selectByVisibleText("Last 24 Hours");
 		        
@@ -81,7 +70,25 @@ public class DownloadReport {
 					}
 				}
 				
-				driver.findElement(By.xpath("//*[text()='1']")).click();
+				String [] dateFromArray = dateFrom.split("/");
+				String dateFrom = dateFromArray[0];
+				String monthFrom = dateFromArray[1];
+				String yearFrom = dateFromArray[2];
+				String monthYearFrom = monthFrom+" "+yearFrom ;
+
+				System.out.println(dateFrom);
+				System.out.println(monthFrom);
+				System.out.println(yearFrom);
+				System.out.println(monthYearFrom);
+				
+				while(!(driver.findElement(By.xpath("html/body/table/tbody/tr/td/table/tbody/tr[1]/td/table/tbody/tr/td[2]/font")).getText().contains(monthYearFrom))){
+					
+					driver.findElement(By.xpath("//img[@alt='previous month']")).click();
+					
+				}
+								
+								
+				driver.findElement(By.xpath("html/body/table/tbody/tr/td/table/tbody/tr[3]/td/a/font[text()='"+dateFrom+"']")).click();
 				
 				driver.switchTo().window(parentWindow);
 				//driver.switchTo().defaultContent();
@@ -95,7 +102,20 @@ public class DownloadReport {
 					}
 				}
 				
-				driver.findElement(By.xpath("//*[text()='20']")).click();
+				String [] dateToArray = dateTo.split("/");
+				String dateTo = dateToArray[0];
+				String monthTo = dateToArray[1];
+				String yearTo = dateToArray[2];
+				String monthYearTo = monthTo+" "+yearTo ;
+
+				while(!(driver.findElement(By.xpath("html/body/table/tbody/tr/td/table/tbody/tr[1]/td/table/tbody/tr/td[2]/font")).getText().contains(monthYearTo))){
+					
+					driver.findElement(By.xpath("//img[@alt='previous month']")).click();
+					
+				}
+					
+				
+				driver.findElement(By.xpath("html/body/table/tbody/tr/td/table/tbody/tr[7]/td/a/font[text()='"+dateTo+"']")).click();
 				
 				/*  driver.findElement(By.xpath("//a[@href='javascript:set_datetime(1514746938771, true);']")).click();
 		        driver.findElement(By.xpath("//a[@href='javascript:set_datetime(1516042853565, true);']")).click();*/
