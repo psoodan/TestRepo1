@@ -26,9 +26,10 @@ public class DownloadReport {
 				
 				report = new ExtentReports(System.getProperty("user.dir") +"/test-output/STMExtentReport.html", false);
 				logger = report.startTest("Test has been started");
-				System.setProperty("webdriver.chrome.driver", "D:/Drivers/chromedriver.exe");
+				System.setProperty("webdriver.chrome.driver", "C:/Users/psoodan/git/Reports2/Drivers/chromedriver.exe");
 				driver = new ChromeDriver();
 				logger.log(LogStatus.INFO, "Chrome browser open");
+				driver.manage().window().maximize();
 				driver.get("https://ddakshi:Mpower@123@20.149.4.228/access/prd2/index.pl");  //http://username:password@url
 				logger.log(LogStatus.INFO, "User login");
 		        driver.findElement(By.xpath("//*[text()='SERVICE REPORTS']")).click();
