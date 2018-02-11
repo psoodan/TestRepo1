@@ -3,7 +3,7 @@
 <suite name="Suite">
   <test name="Test">
     <classes>
-      <class name="SmartPortal.Reports.DownloadReport"/>
+      <class name="SmartPortal.Reports2.DownloadReport"/>
     </classes>
   </test> <!-- Test -->
 </suite> <!-- Suite -->
