@@ -3,11 +3,11 @@
   <modelVersion>4.0.0</modelVersion>
 
   <groupId>SmartPortal</groupId>
-  <artifactId>Reports</artifactId>
+  <artifactId>Reports2</artifactId>
   <version>0.0.1-SNAPSHOT</version>
   <packaging>jar</packaging>
 
-  <name>Reports</name>
+  <name>Reports2</name>
   <url>http://maven.apache.org</url>
   
 <properties>
@@ -16,7 +16,7 @@
 
   <dependencies>
   
-  <!-- https://mvnrepository.com/artifact/org.seleniumhq.selenium/selenium-java -->
+    <!-- https://mvnrepository.com/artifact/org.seleniumhq.selenium/selenium-java -->
 <dependency>
     <groupId>org.seleniumhq.selenium</groupId>
     <artifactId>selenium-java</artifactId>
